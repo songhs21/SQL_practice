@@ -1,3 +1,5 @@
+#_-_encoding=utf8_-_
+#__author__="huiseong.song"
 import pymysql
 
 bookdb = pymysql.connect(user="root", passwd="gozldtlqkf!23", host="localhost", db="guest_book", charset="utf8") # sql 실행
@@ -12,7 +14,7 @@ def writing(insert_data): # 글 쓰기 함수
     
     
     insert_sql = "INSERT INTO written VALUES(%s, %s, %s, %s);" # SQL문 실행
-    cur.execute(insert_sql, insert_data) # 커서 close
+    cur.execute(insert_sql, insert_data) # %s에 insert_data 리스트 값 순서대로 삽입
     
     bookdb.commit() # bookdb에 삽입한 데이터 커밋
     bookdb.close() # bookdb close
